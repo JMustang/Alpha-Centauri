@@ -1,3 +1,4 @@
+import { CreateTaskDto } from './dto/create-task.dto';
 // nest g service tasks --no-spec.
 // yarn add uuid
 import { Injectable } from '@nestjs/common';
@@ -12,7 +13,8 @@ export class TasksService {
     return this.tasks;
   }
 
-  createTask(title: string, description: string): Task {
+  createTask(createTaskDto: CreateTaskDto): Task {
+    const { title, description } = createTaskDto;
     const task: Task = {
       id: uuid(),
       title,
